@@ -43,7 +43,6 @@ public class SubscriberServiceImpl implements SubscriberService
 	public boolean save(Subscriber subscriber) 
 	{
 		subscriber.setLastModified(getCurrentTime());
-		System.out.println("I'm going to save now");
 		return subscriberDao.save(subscriber);
 	}
 
