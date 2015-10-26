@@ -14,7 +14,7 @@ public class MySqlDaoService implements DaoService
 	private static final String PORT = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	private static final String USER = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	private static final String PASSWORD = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	private static final String DATABASE = "wp";
+	private static final String DATABASE = "notification";
 	
 	public Connection getConnection() throws SQLException 
 	{
@@ -29,12 +29,11 @@ public class MySqlDaoService implements DaoService
                 throw new RuntimeException(e);
             }
 
-            StringBuilder url = new StringBuilder("jdbc:mysql://");
-            url.append(HOST).append(":").append(PORT).append("/");
-            //url.append(HOST).append("/");
-            url.append(DATABASE);
-            url.append("?user=" ).append(USER);
-            url.append("&password=").append(PASSWORD);
+            StringBuilder url = new StringBuilder("jdbc:mysql://")
+            		.append(HOST).append(":").append(PORT).append("/")
+            		.append(DATABASE)
+            		.append("?user=" ).append(USER)
+            		.append("&password=").append(PASSWORD);
 
             connection = DriverManager.getConnection(url.toString());
 		}
