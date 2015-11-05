@@ -3,9 +3,9 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>common-service</artifactId>
+  <artifactId>common-model</artifactId>
   <packaging>jar</packaging>
-  <name>Common API Services</name>
+  <name>Common API Models</name>
 
   <parent>
     <groupId>com.wet.api</groupId>
@@ -14,14 +14,10 @@
   </parent>
 
   <dependencies>
-    <!-- West Enterprise Common Dependencies -->
+    <!-- Hibernate Dependencies -->
     <dependency>
-      <groupId>com.wet.api</groupId>
-      <artifactId>common-dao</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.wet.api</groupId>
-      <artifactId>common-model</artifactId>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
     </dependency>
   </dependencies>
 

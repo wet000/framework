@@ -1,32 +1,68 @@
 package com.wet.api.notification.model;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Subscriber 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
+import com.wet.api.common.model.DomainObject;
+
+@Entity
+@Table(name="subscriber")
+public class Subscriber implements DomainObject, Serializable
 {
+	private static final long serialVersionUID = 3810843741678605212L;
+	
 	public final static boolean ACTIVE = Boolean.TRUE;
 	public final static boolean INACTIVE = Boolean.FALSE;
 	public final static boolean CONFIRMED = Boolean.TRUE;
 	
-	private int id;
-	private short formId;
-	private String email;
-	private boolean active;
-	private boolean confirmed;
-	private DateTime createDate;
-	private DateTime activateDate;
-	private DateTime deactivateDate;
-	private DateTime confirmDate;
-	private DateTime lastModified;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	
-	public int getId() 
+	private short formId;
+	
+	private String email;
+	
+	private boolean active;
+	
+	private boolean confirmed;
+	
+	@Column(name="create_date", columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createDate;
+	
+	@Column(name="activate_date", columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date activateDate;
+	
+	@Column(name="deactivate_date", columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date deactivateDate;
+
+	@Column(name="confirm_date", columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date confirmDate;
+	
+	@Version
+	private Date version;
+	
+	public long getId() 
 	{
 		return id;
 	}
 	
-	public void setId(int id)
+	public void setId(long id)
 	{
 		this.id = id;
 	}
@@ -70,56 +106,46 @@ public class Subscriber
 		this.confirmed = confirmed;
 	}
 	
-	public DateTime getCreateDate() 
+	public Date getCreateDate() 
 	{
 		return createDate;
 	}
 
-	public void setCreateDate(DateTime createDate) 
+	public void setCreateDate(Date createDate) 
 	{
 		this.createDate = createDate;
 	}
 
-	public DateTime getActivateDate() 
+	public Date getActivateDate() 
 	{
 		return activateDate;
 	}
 
-	public void setActivateDate(DateTime activateDate) 
+	public void setActivateDate(Date activateDate) 
 	{
 		this.activateDate = activateDate;
 	}
 
-	public DateTime getDeactivateDate() 
+	public Date getDeactivateDate() 
 	{
 		return deactivateDate;
 	}
 
-	public void setDeactivateDate(DateTime deactivateDate) 
+	public void setDeactivateDate(Date deactivateDate) 
 	{
 		this.deactivateDate = deactivateDate;
 	}
 
-	public DateTime getConfirmDate() 
+	public Date getConfirmDate() 
 	{
 		return confirmDate;
 	}
 
-	public void setConfirmDate(DateTime confirmDate)
+	public void setConfirmDate(Date confirmDate)
 	{
 		this.confirmDate = confirmDate;
 	}
 
-	public DateTime getLastModified() 
-	{
-		return lastModified;
-	}
-
-	public void setLastModified(DateTime lastModified) 
-	{
-		this.lastModified = lastModified;
-	}
-	
 	/**
 	 * Returns a string representation of a {@Subscriber}.
 	 * 
@@ -128,7 +154,7 @@ public class Subscriber
 	@Override
 	public String toString()
 	{
-		DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy h:mm:ssa");
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy h:mm:ssa");
 		StringBuilder sb = new StringBuilder("[");
 		
 		// Id and Form Id
@@ -144,13 +170,13 @@ public class Subscriber
 		}
 		else
 		{
-			sb.append("Subscribed:").append(formatter.print(this.createDate)).append(", ");
+			sb.append("Subscribed:").append(formatter.format(this.createDate)).append(", ");
 		}
 		
 		// Active
 		if (this.isActive())
 		{
-			sb.append("Active:").append(formatter.print(this.activateDate)).append(", ");
+			sb.append("Active:").append(formatter.format(this.activateDate)).append(", ");
 		}
 		else
 		{
@@ -161,14 +187,14 @@ public class Subscriber
 			}
 			else
 			{
-				sb.append(":").append(formatter.print(this.deactivateDate)).append(", ");
+				sb.append(":").append(formatter.format(this.deactivateDate)).append(", ");
 			}
 		}
 		
 		// Confirmed
 		if (this.isConfirmed())
 		{
-			sb.append("Confirmed:").append(formatter.print(this.confirmDate)).append(", ");
+			sb.append("Confirmed:").append(formatter.format(this.confirmDate)).append(", ");
 		}
 		else
 		{
@@ -176,13 +202,13 @@ public class Subscriber
 		}
 		
 		// Last Modified
-		if (this.lastModified == null)
+		if (this.version == null)
 		{
 			sb.append("Not Saved");
 		}
 		else
 		{
-			sb.append("Last Modified:").append(formatter.print(this.lastModified));
+			sb.append("Version:").append(formatter.format(this.version));
 		}
 		sb.append("]");
 		
@@ -195,6 +221,9 @@ public class Subscriber
 	 * {@Subscriber}s are considered equal if the email addresses are equal
 	 * since the email address is the only point of contact to the 
 	 * subscriber.
+	 * Note: Subscribers may subscribe to multiple things via multiple forms. 
+	 * Consequently, form_id and email form a unique key. May need to revisit
+	 * this when have multiple things to subscribe through via multiple forms
 	 * 
 	 * @param	o	the term object passed in to determine its equality with this object
 	 * @return		true if this term is equal to the term passed in

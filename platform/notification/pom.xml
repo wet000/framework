@@ -16,6 +16,7 @@
 
   <modules>
   	<module>notification-bom</module>
+    <module>notification-dao</module>
   	<module>notification-model</module>
   	<module>notification-service</module>
   </modules>
@@ -24,7 +25,6 @@
     <common.bom.version>01.00.00.00-SNAPSHOT</common.bom.version>
     <notification.bom.version>01.00.00.00-SNAPSHOT</notification.bom.version>
   </properties>
-
 
   <dependencyManagement>
     <dependencies>
@@ -45,14 +45,30 @@
       <artifactId>commons-lang3</artifactId>
     </dependency>
 
+    <!-- Hibernate Dependencies -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+
     <!-- Other Dependencies -->
     <dependency>
       <groupId>javax.inject</groupId>
       <artifactId>javax.inject</artifactId>
     </dependency>
-    <dependency>
+    <!--<dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
+    </dependency>-->
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
     </dependency>
   </dependencies>
   

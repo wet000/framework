@@ -1,20 +1,13 @@
-package com.wet.api.notification.service.api;
+package com.wet.api.notification.service;
 
 import java.util.List;
 
+import com.wet.api.common.service.CommonDaoService;
 import com.wet.api.notification.model.Subscriber;
 import com.wet.api.notification.model.SubscriberSearch;
 
-public interface SubscriberService 
-{
-	/**
-	 * Find a specific {@link Subscriber}.
-	 * 
-	 * @param 	id	The id of the {@link Subscriber} to search for
-	 * @return 		The found {@link Subscriber} (or null)
-	 */
-	public Subscriber find(int id);
-	
+public interface SubscriberDaoService extends CommonDaoService<Subscriber> 
+{	
 	/**
 	 * Find a specific {@link Subscriber}.
 	 * 
@@ -30,22 +23,6 @@ public interface SubscriberService
 	 * @return			A {@link List} of {@link Subscriber}
 	 */
 	public List<Subscriber> find(SubscriberSearch search);
-
-	/**
-	 * Saves a {@link Subscriber} to persistent storage by either creating or
-	 * updating a database record.
-	 *
-	 * @param 	subscriber 	The {@link Subscriber} to save
-	 * @return 				The saved {@link Subscriber} with the generated id
-	 */
-	public boolean save(Subscriber subscriber);
-
-	/**
-	 * Delete a {@link Subscriber}
-	 *
-	 * @param 	id 	The id of the {@link Subscriber} to delete
-	 */
-	public void delete(int id);
 	
 	/**
 	 * Subscribes a {@link Subscriber}
@@ -53,13 +30,6 @@ public interface SubscriberService
 	 * @param 	subscriber	The {@link Subscriber} to subscribe
 	 */
 	public void subscribe(Subscriber subscriber);
-	
-	/**
-	 * Activates a {@link Subscriber}
-	 *
-	 * @param 	subscriber	The {@link Subscriber} to activate
-	 */
-	public void activate(Subscriber subscriber);
 	
 	/**
 	 * Deactivates a {@link Subscriber}
