@@ -17,11 +17,12 @@
     <commons.dbcp2.version>2.1.1</commons.dbcp2.version>
     <dbunit.version>2.4.9</dbunit.version>
     <h2.version>1.4.190</h2.version>
+    <hamcrest.version>2.0.0.0</hamcrest.version>
     <hibernate.version>4.3.11.Final</hibernate.version>
     <spring.version>4.2.1.RELEASE</spring.version>
     <jstl.version>1.2</jstl.version>
     <javax.inject.version>1</javax.inject.version>
-    <!--<joda.time.version>2.6</joda.time.version>-->
+    <joda.time.version>2.6</joda.time.version>
     <junit.version>4.12</junit.version>
     <mockito.version>1.10.19</mockito.version>
     <mysql.version>5.1.25</mysql.version>
@@ -145,11 +146,11 @@
         <artifactId>javax.inject</artifactId>
         <version>${javax.inject.version}</version>
       </dependency>
-      <!--<dependency>
+      <dependency>
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
         <version>${joda.time.version}</version>
-      </dependency>-->
+      </dependency>
 
       <!-- Testing Dependencies -->
       <dependency>
@@ -157,6 +158,11 @@
         <artifactId>dbunit</artifactId>
         <version>${dbunit.version}</version>
         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-junit</artifactId>
+        <version>${hamcrest.version}</version>
       </dependency>
       <dependency>
         <groupId>junit</groupId>

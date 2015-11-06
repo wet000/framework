@@ -4,9 +4,9 @@ CREATE TABLE IF NOT EXISTS subscriber (
 	email varchar,
 	active tinyint,
 	confirmed tinyint,
-	create_date date,
-	activate_date date,
-	deactivate_date date,
-	confirm_date date,
-	version date
+	create_date timestamp,
+	activate_date timestamp,
+	deactivate_date timestamp,
+	confirm_date timestamp,
+	version timestamp
 )

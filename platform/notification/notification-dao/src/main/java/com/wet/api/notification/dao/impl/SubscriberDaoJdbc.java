@@ -50,11 +50,11 @@ public class SubscriberDaoJdbc extends AbstractDaoJdbc<Subscriber> implements Su
 	        	subscriber.setEmail(resultSet.getString("email"));
 	        	subscriber.setActive(resultSet.getBoolean("active"));
 	        	subscriber.setConfirmed(resultSet.getBoolean("confirmed"));
-	        	subscriber.setCreateDate(resultSet.getDate("create_date"));
-	        	subscriber.setActivateDate(resultSet.getDate("activate_date"));
-	        	subscriber.setDeactivateDate(resultSet.getDate("deactivate_date"));
-	        	subscriber.setConfirmDate(resultSet.getDate("confirm_date"));
-	        	subscriber.setVersion(resultSet.getDate("version"));
+	        	subscriber.setCreateDate(resultSet.getTimestamp("create_date"));
+	        	subscriber.setActivateDate(resultSet.getTimestamp("activate_date"));
+	        	subscriber.setDeactivateDate(resultSet.getTimestamp("deactivate_date"));
+	        	subscriber.setConfirmDate(resultSet.getTimestamp("confirm_date"));
+	        	subscriber.setVersion(resultSet.getTimestamp("version"));
 	        }	
 		}
 		catch (SQLException e)
@@ -168,7 +168,7 @@ public class SubscriberDaoJdbc extends AbstractDaoJdbc<Subscriber> implements Su
 	{
 		PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-		statement.setInt(1, subscriber.getFormId());
+		statement.setShort(1, subscriber.getFormId());
 		statement.setString(2, subscriber.getEmail());
 		statement.setBoolean(3, subscriber.isActive());
 		statement.setBoolean(4, subscriber.isConfirmed());
@@ -176,14 +176,14 @@ public class SubscriberDaoJdbc extends AbstractDaoJdbc<Subscriber> implements Su
 		statement.setTimestamp(6, new Timestamp(subscriber.getActivateDate().getTime()));
 		statement.setTimestamp(7, subscriber.getDeactivateDate() == null ? null : new Timestamp(subscriber.getDeactivateDate().getTime()));
 		statement.setTimestamp(8, subscriber.getConfirmDate() == null ? null : new Timestamp(subscriber.getConfirmDate().getTime()));
-		statement.setInt(10, subscriber.getFormId());
-		statement.setString(11, subscriber.getEmail());
-		statement.setBoolean(12, subscriber.isActive());
-		statement.setBoolean(13, subscriber.isConfirmed());
-		statement.setTimestamp(14, new Timestamp(subscriber.getCreateDate().getTime()));
-		statement.setTimestamp(15, new Timestamp(subscriber.getActivateDate().getTime()));
-		statement.setTimestamp(16, subscriber.getDeactivateDate() == null ? null : new Timestamp(subscriber.getDeactivateDate().getTime()));
-		statement.setTimestamp(17, subscriber.getConfirmDate() == null ? null : new Timestamp(subscriber.getConfirmDate().getTime()));
+		statement.setShort(9, subscriber.getFormId());
+		statement.setString(10, subscriber.getEmail());
+		statement.setBoolean(11, subscriber.isActive());
+		statement.setBoolean(12, subscriber.isConfirmed());
+		statement.setTimestamp(13, new Timestamp(subscriber.getCreateDate().getTime()));
+		statement.setTimestamp(14, new Timestamp(subscriber.getActivateDate().getTime()));
+		statement.setTimestamp(15, subscriber.getDeactivateDate() == null ? null : new Timestamp(subscriber.getDeactivateDate().getTime()));
+		statement.setTimestamp(16, subscriber.getConfirmDate() == null ? null : new Timestamp(subscriber.getConfirmDate().getTime()));
 		
 		return statement;
 	}
