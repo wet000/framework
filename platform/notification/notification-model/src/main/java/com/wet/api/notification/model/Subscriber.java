@@ -146,6 +146,16 @@ public class Subscriber implements DomainObject, Serializable
 		this.confirmDate = confirmDate;
 	}
 
+	public Date getVersion() 
+	{
+		return version;
+	}
+
+	public void setVersion(Date version) 
+	{
+		this.version = version;
+	}
+
 	/**
 	 * Returns a string representation of a {@Subscriber}.
 	 * 

@@ -28,7 +28,54 @@ public class SubscriberDaoJdbc extends AbstractDaoJdbc<Subscriber> implements Su
 	@Override
 	public Subscriber find(long id)
 	{
-		throw new NotImplementedException(NOT_IMPLEMENTED_MESSAGE);
+		Subscriber subscriber = new Subscriber();
+		Connection connection = null;
+
+		StringBuilder sql = new StringBuilder("SELECT * FROM ")
+				.append(getTableName())
+				.append(" WHERE id=?");
+		
+		System.out.println("JDBC: " + sql.toString());
+		
+		try
+		{
+			connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql.toString());
+            statement.setLong(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			if (resultSet.first())
+	        {
+	        	subscriber.setId(resultSet.getLong("id"));
+	        	subscriber.setFormId(resultSet.getShort("form_id"));
+	        	subscriber.setEmail(resultSet.getString("email"));
+	        	subscriber.setActive(resultSet.getBoolean("active"));
+	        	subscriber.setConfirmed(resultSet.getBoolean("confirmed"));
+	        	subscriber.setCreateDate(resultSet.getDate("create_date"));
+	        	subscriber.setActivateDate(resultSet.getDate("activate_date"));
+	        	subscriber.setDeactivateDate(resultSet.getDate("deactivate_date"));
+	        	subscriber.setConfirmDate(resultSet.getDate("confirm_date"));
+	        	subscriber.setVersion(resultSet.getDate("version"));
+	        }	
+		}
+		catch (SQLException e)
+		{
+			// TODO: Log error message
+			System.out.println(e.getMessage());
+		}
+		finally
+		{
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				// TODO: Log error message
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		return subscriber;
 	}
 
 	@Override
