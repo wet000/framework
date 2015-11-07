@@ -31,6 +31,6 @@ public abstract class AbstractCommonDaoService<T extends DomainObject> implement
 	@Override
 	public void delete(T object) 
 	{
-		delete(object);
+		getDao().delete(object);
 	}
 }
