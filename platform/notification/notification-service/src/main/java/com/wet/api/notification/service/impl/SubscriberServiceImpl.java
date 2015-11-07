@@ -1,85 +1,59 @@
 package com.wet.api.notification.service.impl;
 
-import java.util.List;
+import java.util.Date;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.apache.commons.lang3.NotImplementedException;
-import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wet.api.notification.model.Subscriber;
-import com.wet.api.notification.model.SubscriberSearch;
-import com.wet.api.notification.service.api.SubscriberService;
-import com.wet.api.notification.service.dao.SubscriberDao;
+import com.wet.api.notification.service.SubscriberDaoService;
+import com.wet.api.notification.service.SubscriberService;
 
-@Named
 public class SubscriberServiceImpl implements SubscriberService 
 {
-	private final static String NOT_IMPLEMENTED_MESSAGE = "This method is currently not implemented";
+	@Autowired
+	SubscriberDaoService subscriberDaoService;
 	
-	@Inject
-	SubscriberDao subscriberDao;
-
-	@Override
-	public Subscriber find(int id) 
-	{
-		throw new NotImplementedException(NOT_IMPLEMENTED_MESSAGE);
-	}
-
-	@Override
-	public Subscriber find(String email) 
-	{
-		throw new NotImplementedException(NOT_IMPLEMENTED_MESSAGE);
-	}
-
-	@Override
-	public List<Subscriber> find(SubscriberSearch search)
-	{
-		throw new NotImplementedException(NOT_IMPLEMENTED_MESSAGE);
-	}
-
-	@Override
-	public boolean save(Subscriber subscriber) 
-	{
-		subscriber.setLastModified(getCurrentTime());
-		return subscriberDao.save(subscriber);
-	}
-
-	@Override
-	public void delete(int id) 
-	{
-		throw new NotImplementedException(NOT_IMPLEMENTED_MESSAGE);	
-	}
-
 	@Override
 	public void subscribe(Subscriber subscriber) 
 	{
-		subscriber.setCreateDate(getCurrentTime());	
-	}
-
-	@Override
-	public void activate(Subscriber subscriber) 
-	{
+		Date currentDate = new Date();
+		
 		subscriber.setActive(Subscriber.ACTIVE);
-		subscriber.setActivateDate(getCurrentTime());
+		subscriber.setCreateDate(currentDate);
+		subscriber.setActivateDate(currentDate);
+		subscriberDaoService.save(subscriber);
 	}
 
 	@Override
-	public void deactivate(Subscriber subscriber) 
+	public void confirm(Subscriber subscriber) 
 	{
-		subscriber.setActive(Subscriber.INACTIVE);
-		subscriber.setDeactivateDate(getCurrentTime());
-	}
-
-	@Override
-	public void confirm(Subscriber subscriber) {
+		Date currentDate = new Date();
+		
 		subscriber.setConfirmed(Subscriber.CONFIRMED);
-		subscriber.setConfirmDate(getCurrentTime());
+		subscriber.setConfirmDate(currentDate);
+		subscriberDaoService.save(subscriber);
 	}
-	
-	private DateTime getCurrentTime()
+
+	@Override
+	public void subscribeAndConfirm(Subscriber subscriber) 
 	{
-		return new DateTime();
+		Date currentDate = new Date();
+		
+		subscriber.setActive(Subscriber.ACTIVE);
+		subscriber.setConfirmed(Subscriber.CONFIRMED);
+		subscriber.setCreateDate(currentDate);
+		subscriber.setActivateDate(currentDate);
+		subscriber.setConfirmDate(currentDate);
+		subscriberDaoService.save(subscriber);
+	}
+
+	@Override
+	public void unsubscribe(Subscriber subscriber) 
+	{
+		Date currentDate = new Date();
+		
+		subscriber.setActive(Subscriber.INACTIVE);
+		subscriber.setDeactivateDate(currentDate);
+		subscriberDaoService.save(subscriber);
 	}
 }

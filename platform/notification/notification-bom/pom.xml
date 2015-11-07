@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>notification-bom</artifactId>
@@ -16,7 +17,8 @@
   </parent>
 
   <properties>
-    <notification.model.version>01.00.00.00-SNAPSHOT</notification.model.version>
+    <common.bom.version>01.00.00.00-SNAPSHOT</common.bom.version>
+    <notification.version>01.00.00.00-SNAPSHOT</notification.version>
   </properties>
 
   <dependencyManagement>
@@ -24,8 +26,13 @@
       <!-- West Enterprise Notification Dependencies -->
       <dependency>
         <groupId>com.wet.api</groupId>
+        <artifactId>notification-dao</artifactId>
+        <version>${notification.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wet.api</groupId>
         <artifactId>notification-model</artifactId>
-        <version>${notification.model.version}</version>
+        <version>${notification.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

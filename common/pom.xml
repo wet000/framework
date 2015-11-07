@@ -16,6 +16,8 @@
 
   <modules>
   	<module>common-bom</module>
+  	<module>common-dao</module>
+  	<module>common-model</module>
   	<module>common-service</module>
   </modules>
 
@@ -30,5 +32,20 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <dependencies>
+    <!-- Spring Dependencies -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+    </dependency>
+
+    <!-- Testing Dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
 </project>

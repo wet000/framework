@@ -14,6 +14,11 @@
   </parent>
 
   <dependencies>
+    <!-- West Enterprise Common Dependencies -->
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>common-model</artifactId>
+    </dependency>
   </dependencies>
 
 </project>
