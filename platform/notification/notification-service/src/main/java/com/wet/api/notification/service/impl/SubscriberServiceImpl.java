@@ -3,11 +3,13 @@ package com.wet.api.notification.service.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.wet.api.notification.model.Subscriber;
 import com.wet.api.notification.service.SubscriberDaoService;
 import com.wet.api.notification.service.SubscriberService;
 
+@Service("subscriberService")
 public class SubscriberServiceImpl implements SubscriberService 
 {
 	@Autowired
