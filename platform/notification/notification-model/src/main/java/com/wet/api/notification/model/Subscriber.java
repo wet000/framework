@@ -13,6 +13,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.wet.api.common.model.DomainObject;
 
@@ -30,19 +34,22 @@ public class Subscriber implements DomainObject, Serializable
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Min(1)
 	private short formId;
-	
+
+	@Email
+	@NotEmpty
 	private String email;
 	
 	private boolean active;
-	
+
 	private boolean confirmed;
 	
-	@Column(name="create_date", columnDefinition="DATETIME")
+	@Column(name="create_date", columnDefinition="DATETIME", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	
-	@Column(name="activate_date", columnDefinition="DATETIME")
+	@Column(name="activate_date", columnDefinition="DATETIME", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date activateDate;
 	
