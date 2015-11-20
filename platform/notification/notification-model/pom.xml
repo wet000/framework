@@ -19,6 +19,12 @@
       <groupId>com.wet.api</groupId>
       <artifactId>common-model</artifactId>
     </dependency>
+
+    <!-- Hibernate Dependencies -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

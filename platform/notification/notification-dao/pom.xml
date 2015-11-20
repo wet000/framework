@@ -5,7 +5,7 @@
   <artifactId>notification-dao</artifactId>
   <packaging>jar</packaging>
 
-  <name>Notification DAO Services</name>
+  <name>Notification API DAOs</name>
 
   <parent>
     <groupId>com.wet.api</groupId>
