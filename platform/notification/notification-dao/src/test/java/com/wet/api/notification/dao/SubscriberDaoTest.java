@@ -9,7 +9,6 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 
-
 import java.io.File;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -26,7 +25,6 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 
 import org.h2.tools.RunScript;
-
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -46,6 +44,7 @@ import com.wet.api.notification.model.Subscriber;
 @ContextConfiguration(locations = {"classpath:/META-INF/spring/spring.xml"})
 public abstract class SubscriberDaoTest
 {	
+	// TODO: This should be put into a test-specific spring configuration or properties file
 	private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
 	private static final String JDBC_URL = "jdbc:h2:mem:notification;DB_CLOSE_DELAY=-1";
 	private static final String USER = "sa";
@@ -135,6 +134,21 @@ public abstract class SubscriberDaoTest
 		cleanlyInsertDataset(dataSet);
 	}
 	
+	protected Subscriber getSubscriber()
+	{
+		Subscriber subscriber = new Subscriber();
+		subscriber.setFormId((short)31);
+		subscriber.setEmail("tester11@email.com");
+		subscriber.setActive(Subscriber.ACTIVE);
+		subscriber.setConfirmed(Subscriber.CONFIRMED);
+		subscriber.setCreateDate(new Date());
+		subscriber.setActivateDate(new Date());
+		subscriber.setDeactivateDate(new Date());
+		subscriber.setConfirmDate(new Date());
+		
+		return subscriber;
+	}
+	
 	@Test
 	public void testFindById()
 	{
@@ -173,16 +187,7 @@ public abstract class SubscriberDaoTest
 	@Test
 	public void testSave()
 	{
-		Subscriber subscriber = new Subscriber();
-		subscriber.setFormId((short)31);
-		subscriber.setEmail("tester11@email.com");
-		subscriber.setActive(Subscriber.ACTIVE);
-		subscriber.setConfirmed(Subscriber.CONFIRMED);
-		subscriber.setCreateDate(new Date());
-		subscriber.setActivateDate(new Date());
-		subscriber.setDeactivateDate(new Date());
-		subscriber.setConfirmDate(new Date());
-		
+		Subscriber subscriber = getSubscriber();
 		getSubscriberDao().save(subscriber);
 		
 		assertThat(subscriber.getId(), greaterThan(0L));

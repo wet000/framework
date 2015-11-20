@@ -8,5 +8,6 @@ CREATE TABLE IF NOT EXISTS subscriber (
 	activate_date timestamp,
 	deactivate_date timestamp,
 	confirm_date timestamp,
-	version timestamp
+	version timestamp,
+	UNIQUE KEY form_email (form_id, email)
 )
