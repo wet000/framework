@@ -25,7 +25,6 @@ public interface Dao<T extends DomainObject>
 	 * Update or create a {@link T}.
 	 *
 	 * @param 	object The {@link T} to create or update
-	 * @return	True if the {@link T} was successfully saved.
 	 */
 	public void save(T object);
 	
