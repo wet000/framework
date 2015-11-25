@@ -1,38 +1,29 @@
 package com.wet.api.notification.model;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.wet.api.common.model.DomainObject;
+import com.wet.api.common.model.impl.AbstractDomainEntity;
 
 @Entity
 @Table(name="subscriber")
-public class Subscriber implements DomainObject, Serializable
+public class Subscriber extends AbstractDomainEntity
 {
-	private static final long serialVersionUID = 3810843741678605212L;
+	private static final long serialVersionUID = 3409219829250873360L;
 	
 	public final static boolean ACTIVE = Boolean.TRUE;
 	public final static boolean INACTIVE = Boolean.FALSE;
 	public final static boolean CONFIRMED = Boolean.TRUE;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	
 	@Min(1)
 	private short formId;
@@ -60,9 +51,6 @@ public class Subscriber implements DomainObject, Serializable
 	@Column(name="confirm_date", columnDefinition="DATETIME")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date confirmDate;
-	
-	@Version
-	private Date version;
 	
 	public long getId() 
 	{
@@ -151,16 +139,6 @@ public class Subscriber implements DomainObject, Serializable
 	public void setConfirmDate(Date confirmDate)
 	{
 		this.confirmDate = confirmDate;
-	}
-
-	public Date getVersion() 
-	{
-		return version;
-	}
-
-	public void setVersion(Date version) 
-	{
-		this.version = version;
 	}
 
 	/**
