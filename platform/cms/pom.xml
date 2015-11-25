@@ -39,6 +39,12 @@
   </dependencyManagement>
 
   <dependencies>
+    <!-- Commons Dependencies -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+
     <!-- Testing -->
     <dependency>
       <groupId>junit</groupId>

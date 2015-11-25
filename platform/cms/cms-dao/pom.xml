@@ -15,7 +15,16 @@
     
   <dependencies>
     <!-- West Enterprise Common Dependencies -->
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>common-dao</artifactId>
+    </dependency>
+
     <!-- West Enterprise Content Management System Dependencies -->
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>cms-model</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

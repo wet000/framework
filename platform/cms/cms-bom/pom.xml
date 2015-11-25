@@ -24,6 +24,16 @@
   <dependencyManagement>
     <dependencies>
       <!-- West Enterprise Content Management System Dependencies -->
+      <dependency>
+        <groupId>com.wet.api</groupId>
+        <artifactId>cms-dao</artifactId>
+        <version>${cms.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wet.api</groupId>
+        <artifactId>cms-model</artifactId>
+        <version>${cms.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
