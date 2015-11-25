@@ -9,7 +9,7 @@ public class Category extends AbstractDomainObject
 	private String description;
 	private int parent;
 	private int postCount;
-	
+
 	public String getSlug()
 	{
 		return slug;

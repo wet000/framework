@@ -5,7 +5,7 @@ import com.wet.api.common.model.DomainObject;
 public class AbstractDomainObject implements DomainObject
 {
 	protected long id;
-
+	
 	@Override
 	public long getId() 
 	{
@@ -15,6 +15,6 @@ public class AbstractDomainObject implements DomainObject
 	@Override
 	public void setId(long id) 
 	{
-		this.id = id;	
+		this.id = id;
 	}
 }

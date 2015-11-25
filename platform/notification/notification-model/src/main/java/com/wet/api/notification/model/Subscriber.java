@@ -5,25 +5,36 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.wet.api.common.model.impl.AbstractDomainEntity;
+import com.wet.api.common.model.DomainEntity;
 
 @Entity
 @Table(name="subscriber")
-public class Subscriber extends AbstractDomainEntity
+public class Subscriber implements DomainEntity
 {
 	private static final long serialVersionUID = 3409219829250873360L;
 	
 	public final static boolean ACTIVE = Boolean.TRUE;
 	public final static boolean INACTIVE = Boolean.FALSE;
 	public final static boolean CONFIRMED = Boolean.TRUE;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Version
+	private Date version;
 	
 	@Min(1)
 	private short formId;
@@ -52,14 +63,28 @@ public class Subscriber extends AbstractDomainEntity
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date confirmDate;
 	
+	@Override
 	public long getId() 
 	{
 		return id;
 	}
-	
-	public void setId(long id)
+
+	@Override
+	public void setId(long id) 
 	{
-		this.id = id;
+		this.id = id;	
+	}
+	
+	@Override
+	public Date getVersion() 
+	{
+		return version;
+	}
+
+	@Override
+	public void setVersion(Date version) 
+	{
+		this.version = version;
 	}
 	
 	public short getFormId()
