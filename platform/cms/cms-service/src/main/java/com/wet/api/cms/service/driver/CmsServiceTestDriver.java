@@ -49,10 +49,11 @@ public class CmsServiceTestDriver
 			}
 		}
 		
-		List<Post> careerPosts = cmsService.findPostsByCategory("Careers");
+		List<Post> careerPosts = cmsService.findPostsByCategory("Careers", 2, 2);
 		for (Post post : careerPosts)
 		{
 			System.out.println("Title: " + post.getTitle());
+			System.out.println("Thumbnail: " + post.getThumbnail());
 		}
 		
 		context.close();

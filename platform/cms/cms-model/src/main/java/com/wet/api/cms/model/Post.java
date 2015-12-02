@@ -19,7 +19,7 @@ public class Post extends AbstractDomainObject
 	private List<Tag> tags;
 	private Author author;
 	private List<Comment> comments;
-	private List<Attachment>attachments;
+	private List<Attachment> attachments;
 	private int commentCount;
 	private String commentStatus; // open or closed
 	private String thumbnail; // only included if a post thumbnail has been specified
