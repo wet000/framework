@@ -2,9 +2,9 @@ package com.wet.api.common.dao;
 
 import java.util.List;
 
-import com.wet.api.common.model.DomainObject;
+import com.wet.api.common.model.DomainEntity;
 
-public interface Dao<T extends DomainObject> 
+public interface Dao<T extends DomainEntity> 
 {
 	/**
 	 * Find a {@link T} by id.

@@ -3,10 +3,10 @@ package com.wet.api.common.service.impl;
 import java.util.List;
 
 import com.wet.api.common.dao.Dao;
-import com.wet.api.common.model.DomainObject;
+import com.wet.api.common.model.DomainEntity;
 import com.wet.api.common.service.CommonDaoService;
 
-public abstract class AbstractCommonDaoService<T extends DomainObject> implements CommonDaoService<T> 
+public abstract class AbstractCommonDaoService<T extends DomainEntity> implements CommonDaoService<T> 
 {	
 	protected abstract Dao<T> getDao();
 	
