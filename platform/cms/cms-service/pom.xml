@@ -15,7 +15,26 @@
     
   <dependencies>
     <!-- West Enterprise Common Dependencies -->
-    <!-- West Enterprise Content Management System Dependencies -->
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>common-service</artifactId>
+    </dependency>
+
+    <!-- West Enterprise CMS Dependencies -->
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>cms-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>cms-rest</artifactId>
+    </dependency>
+
+    <!-- Spring Dependencies -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

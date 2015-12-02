@@ -16,8 +16,8 @@
 
   <modules>
   	<module>cms-bom</module>
-    <module>cms-dao</module>
   	<module>cms-model</module>
+    <module>cms-rest</module>
   	<module>cms-service</module>
   </modules>
 
@@ -39,20 +39,29 @@
   </dependencyManagement>
 
   <dependencies>
-    <!-- Commons Dependencies -->
+
+    <!-- Jackson JSON Mapper Dependencies -->
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+
+    <!-- Other Dependencies -->
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
     </dependency>
 
     <!-- Testing -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   

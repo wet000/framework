@@ -2,8 +2,10 @@ package com.wet.api.cms.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wet.api.common.model.impl.AbstractDomainObject;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Attachment extends AbstractDomainObject
 {
 	private String url;

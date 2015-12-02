@@ -1,12 +1,19 @@
 package com.wet.api.cms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.wet.api.common.model.impl.AbstractDomainObject;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Author extends AbstractDomainObject
 {
 	private String slug;
 	private String name;
+	
+	@JsonProperty("first_name")
 	private String firstName;
+	
+	@JsonProperty("last_name")
 	private String lastName;
 	private String nickname;
 	private String url;

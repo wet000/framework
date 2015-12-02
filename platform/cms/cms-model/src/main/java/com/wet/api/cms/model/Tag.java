@@ -1,7 +1,9 @@
 package com.wet.api.cms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wet.api.common.model.impl.AbstractDomainObject;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Tag extends AbstractDomainObject
 {	
 	private String slug;

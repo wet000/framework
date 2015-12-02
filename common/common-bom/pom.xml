@@ -21,6 +21,7 @@
     <hibernate.entitymanager.version>4.3.11.Final</hibernate.entitymanager.version>
     <hibernate.validator.version>5.2.2.Final</hibernate.validator.version>
     <spring.version>4.2.1.RELEASE</spring.version>
+    <jackson-databind.version>2.6.3</jackson-databind.version>
     <javax.el.version>3.0.0</javax.el.version>
     <javax.inject.version>1</javax.inject.version>
     <jstl.version>1.2</jstl.version>
@@ -32,6 +33,7 @@
 
   <dependencyManagement>
     <dependencies>
+
       <!-- West Enterprise Common Dependencies -->
       <dependency>
         <groupId>com.wet.api</groupId>
@@ -41,6 +43,11 @@
       <dependency>
         <groupId>com.wet.api</groupId>
         <artifactId>common-model</artifactId>
+        <version>${common.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wet.api</groupId>
+        <artifactId>common-rest</artifactId>
         <version>${common.version}</version>
       </dependency>
       <dependency>
@@ -62,12 +69,13 @@
       </dependency>
 
       <!-- Logging Dependencies -->
- <dependency>
-  <groupId>org.slf4j</groupId>
-  <artifactId>slf4j-api</artifactId>
-  <version>1.7.12</version>
-</dependency>
- 
+      <!-- Needed for dbunit - that's why it's in test scope for now -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.12</version>
+        <scope>test</scope>
+      </dependency>
       		
       <!-- Spring Dependecies -->
       <!--<dependency>
@@ -124,13 +132,7 @@
         <artifactId>hibernate-validator</artifactId>
         <version>${hibernate.validator.version}</version>
       </dependency>
-
       <!--<dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>${hibernate.version}</version>
-      </dependency> 
-      <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-search</artifactId>
         <version>${hibernate.version}</version>
@@ -146,6 +148,13 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>${mysql.version}</version>
+      </dependency>
+
+      <!-- Jackson JSON Mapper Dependencies -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-databind.version}</version>
       </dependency>
 
       <!-- Other Dependencies -->

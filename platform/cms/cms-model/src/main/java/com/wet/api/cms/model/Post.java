@@ -193,4 +193,30 @@ public class Post extends AbstractDomainObject
 	{
 		this.thumbnail = thumbnail;
 	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(this.type).append(",");
+		sb.append(this.slug).append(",");
+		sb.append(this.url).append(",");
+		sb.append(this.title).append(",");
+		sb.append(this.titlePlain).append(",");
+		sb.append(this.content).append(",");
+		sb.append(this.content).append(",");
+		sb.append(this.date).append(",");
+		sb.append(this.modified).append(",");
+		sb.append(this.categories).append(",");
+		sb.append(this.tags).append(",");
+		sb.append(this.author).append(",");
+		sb.append(this.comments).append(",");
+		sb.append(this.attachments).append(",");
+		sb.append(this.commentCount).append(",");
+		sb.append(this.commentStatus).append(",");
+		sb.append(this.thumbnail);
+		
+		return sb.toString();
+	}
 }
