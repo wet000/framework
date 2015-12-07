@@ -17,7 +17,7 @@ public class PostsWpJaRestClientImpl extends AbstractSpringRestClient<PostsWpJaW
 	private static final String METHOD_GET_DATE_POSTS		= "get_date_posts";
 	private static final String METHOD_GET_CATEGORY_POSTS 	= "get_category_posts";
 	private static final String METHOD_GET_TAG_POSTS		= "get_tag_posts";
-	private static final String METHOD_GET_AUTHOR_POSTS		= "get_author_posts";
+	private static final String METHOD_GET_USER_POSTS		= "get_author_posts";
 	private static final String METHOD_GET_SEARCH_RESULTS	= "get_search_results";
 	
 	private static final String PARAM_COUNT 				= "count";
@@ -183,36 +183,36 @@ public class PostsWpJaRestClientImpl extends AbstractSpringRestClient<PostsWpJaW
 	}
 
 	@Override
-	public PostsWpJaWrapper getAuthorPosts(long authorId) 
+	public PostsWpJaWrapper getUserPosts(long userId) 
 	{
-		setMethod(METHOD_GET_AUTHOR_POSTS);
-		putParam(PARAM_ID, authorId);
+		setMethod(METHOD_GET_USER_POSTS);
+		putParam(PARAM_ID, userId);
 		return get();
 	}
 
 	@Override
-	public PostsWpJaWrapper getAuthorPosts(String authorSlug) 
+	public PostsWpJaWrapper getUserPosts(String userSlug) 
 	{
-		setMethod(METHOD_GET_AUTHOR_POSTS);
-		putParam(PARAM_SLUG, authorSlug);
+		setMethod(METHOD_GET_USER_POSTS);
+		putParam(PARAM_SLUG, userSlug);
 		return get();
 	}
 
 	@Override
-	public PostsWpJaWrapper getAuthorPosts(long authorId, int countPerPage, int pageNumber) 
+	public PostsWpJaWrapper getUserPosts(long userId, int countPerPage, int pageNumber) 
 	{
-		setMethod(METHOD_GET_AUTHOR_POSTS);
-		putParam(PARAM_ID, authorId);
+		setMethod(METHOD_GET_USER_POSTS);
+		putParam(PARAM_ID, userId);
 		putParam(PARAM_COUNT, countPerPage);
 		putParam(PARAM_PAGE, pageNumber);
 		return get();
 	}
 
 	@Override
-	public PostsWpJaWrapper getAuthorPosts(String authorSlug, int countPerPage, int pageNumber) 
+	public PostsWpJaWrapper getUserPosts(String userSlug, int countPerPage, int pageNumber) 
 	{
-		setMethod(METHOD_GET_AUTHOR_POSTS);
-		putParam(PARAM_SLUG, authorSlug);
+		setMethod(METHOD_GET_USER_POSTS);
+		putParam(PARAM_SLUG, userSlug);
 		putParam(PARAM_COUNT, countPerPage);
 		putParam(PARAM_PAGE, pageNumber);
 		return get();

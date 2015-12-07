@@ -2,6 +2,7 @@ package com.wet.api.cms.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.wet.api.common.model.impl.AbstractDomainObject;
 
 public class Post extends AbstractDomainObject 
@@ -17,7 +18,9 @@ public class Post extends AbstractDomainObject
 	private String modified; // modified by the date_format_argum
 	private List<Category> categories;
 	private List<Tag> tags;
-	private Author author;
+	
+	@JsonProperty("author")
+	private User user;
 	private List<Comment> comments;
 	private List<Attachment> attachments;
 	private int commentCount;
@@ -134,14 +137,14 @@ public class Post extends AbstractDomainObject
 		this.tags = tags;
 	}
 	
-	public Author getAuthor()
+	public User getUser()
 	{
-		return author;
+		return user;
 	}
 	
-	public void setAuthor(Author author) 
+	public void setUser(User user) 
 	{
-		this.author = author;
+		this.user = user;
 	}
 	
 	public List<Comment> getComments()
@@ -210,7 +213,7 @@ public class Post extends AbstractDomainObject
 		sb.append(this.modified).append(",");
 		sb.append(this.categories).append(",");
 		sb.append(this.tags).append(",");
-		sb.append(this.author).append(",");
+		sb.append(this.user).append(",");
 		sb.append(this.comments).append(",");
 		sb.append(this.attachments).append(",");
 		sb.append(this.commentCount).append(",");

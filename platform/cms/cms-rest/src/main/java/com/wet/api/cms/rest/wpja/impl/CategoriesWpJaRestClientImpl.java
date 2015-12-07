@@ -3,11 +3,11 @@ package com.wet.api.cms.rest.wpja.impl;
 import org.springframework.stereotype.Service;
 
 import com.wet.api.cms.model.wpja.CategoriesWpJaWrapper;
-import com.wet.api.cms.rest.wpja.CategoriesWpJaRestClient;
+import com.wet.api.cms.rest.wpja.CategoryWpJaRestClient;
 import com.wet.api.common.rest.impl.AbstractSpringRestClient;
 
 @Service("categoriesWpJaRestClientImpl")
-public class CategoriesWpJaRestClientImpl extends AbstractSpringRestClient<CategoriesWpJaWrapper> implements CategoriesWpJaRestClient<CategoriesWpJaWrapper> 
+public class CategoriesWpJaRestClientImpl extends AbstractSpringRestClient<CategoriesWpJaWrapper> implements CategoryWpJaRestClient<CategoriesWpJaWrapper> 
 {
 	private static final String METHOD_GET_CATEGORY_INDEX = "get_category_index";
 	private static final String PARAM_PARENT = "parent";

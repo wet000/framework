@@ -7,90 +7,22 @@ import org.joda.time.YearMonth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wet.api.cms.model.Archive;
-import com.wet.api.cms.model.Author;
-import com.wet.api.cms.model.Category;
 import com.wet.api.cms.model.Post;
-import com.wet.api.cms.model.Tag;
-import com.wet.api.cms.model.wpja.ArchiveWpJaWrapper;
-import com.wet.api.cms.model.wpja.AuthorsWpJaWrapper;
-import com.wet.api.cms.model.wpja.CategoriesWpJaWrapper;
 import com.wet.api.cms.model.wpja.PostWpJaWrapper;
 import com.wet.api.cms.model.wpja.PostsWpJaWrapper;
-import com.wet.api.cms.model.wpja.TagsWpJaWrapper;
-import com.wet.api.cms.rest.wpja.ArchiveWpJaRestClient;
-import com.wet.api.cms.rest.wpja.AuthorsWpJaRestClient;
-import com.wet.api.cms.rest.wpja.CategoriesWpJaRestClient;
 import com.wet.api.cms.rest.wpja.PostWpJaRestClient;
 import com.wet.api.cms.rest.wpja.PostsWpJaRestClient;
-import com.wet.api.cms.rest.wpja.TagsWpJaRestClient;
-import com.wet.api.cms.service.CmsService;
+import com.wet.api.cms.service.PostService;
 
-@Service("cmsRestService")
-public class CmsRestService implements CmsService 
+@Service("postRestService")
+public class PostRestService implements PostService 
 {
-	@Autowired
-	private ArchiveWpJaRestClient<ArchiveWpJaWrapper> archiveWpJaRestClient;
-	
-	@Autowired
-	private AuthorsWpJaRestClient<AuthorsWpJaWrapper> authorsWpJaRestClient;
-	
-	@Autowired
-	private CategoriesWpJaRestClient<CategoriesWpJaWrapper> categoriesWpJaRestClient;
-	
-	@Autowired
-	private PostsWpJaRestClient<PostsWpJaWrapper> postsWpJaRestClient;
-	
 	@Autowired
 	private PostWpJaRestClient<PostWpJaWrapper> postWpJaRestClient;
 	
 	@Autowired
-	private TagsWpJaRestClient<TagsWpJaWrapper> tagWpJaRestClient;
+	private PostsWpJaRestClient<PostsWpJaWrapper> postsWpJaRestClient;
 	
-//	@Override
-//	public List<Post> findAll()
-//	{
-//		return this.postsWpRestClient.getPosts().getPosts();
-//	}
-//
-//	@Override
-//	public Archive getArchive() 
-//	{
-//		return archiveWpJaRestClient.getDateIndex().getArchive();
-//	}
-//	
-	
-
-	@Override
-	public Archive getArchive()
-	{
-		return this.archiveWpJaRestClient.getDateIndex().getArchive();
-	}
-
-	@Override
-	public List<Author> findAllAuthors()
-	{
-		return this.authorsWpJaRestClient.getAuthorIndex().getAuthors();
-	}
-
-	@Override
-	public List<Category> findAllCategories()
-	{
-		return this.categoriesWpJaRestClient.getCategoryIndex().getCategories();
-	}
-
-	@Override
-	public List<Category> findAllSubCategories(int parentId) 
-	{
-		return this.categoriesWpJaRestClient.getSubCategoryIndex(parentId).getCategories();
-	}
-
-	@Override
-	public List<Tag> findAllTags() 
-	{
-		return this.tagWpJaRestClient.getTagIndex().getTags();
-	}
-
 	@Override
 	public Post findPostById(long id) 
 	{
@@ -206,27 +138,27 @@ public class CmsRestService implements CmsService
 	}
 
 	@Override
-	public List<Post> findPostsByAuthor(long authorId) 
+	public List<Post> findPostsByUser(long userId) 
 	{
-		return this.postsWpJaRestClient.getAuthorPosts(authorId).getPosts();
+		return this.postsWpJaRestClient.getUserPosts(userId).getPosts();
 	}
 
 	@Override
-	public List<Post> findPostsByAuthor(String authorSlug) 
+	public List<Post> findPostsByUser(String userSlug) 
 	{
-		return this.postsWpJaRestClient.getAuthorPosts(authorSlug).getPosts();
+		return this.postsWpJaRestClient.getUserPosts(userSlug).getPosts();
 	}
 
 	@Override
-	public List<Post> findPostsByAuthor(long authorId, int countPerPage, int pageNumber) 
+	public List<Post> findPostsByUser(long userId, int countPerPage, int pageNumber) 
 	{
-		return this.postsWpJaRestClient.getAuthorPosts(authorId, countPerPage, pageNumber).getPosts();
+		return this.postsWpJaRestClient.getUserPosts(userId, countPerPage, pageNumber).getPosts();
 	}
 
 	@Override
-	public List<Post> findPostsByAuthor(String authorSlug, int countPerPage, int pageNumber) 
+	public List<Post> findPostsByUser(String userSlug, int countPerPage, int pageNumber) 
 	{
-		return this.postsWpJaRestClient.getAuthorPosts(authorSlug, countPerPage, pageNumber).getPosts();
+		return this.postsWpJaRestClient.getUserPosts(userSlug, countPerPage, pageNumber).getPosts();
 	}
 
 	@Override

@@ -6,15 +6,14 @@ import com.wet.api.cms.model.wpja.PostWpJaWrapper;
 import com.wet.api.cms.rest.wpja.PostWpJaRestClient;
 import com.wet.api.common.rest.impl.AbstractSpringRestClient;
 
-@Service("postWpRestClientJa")
-public class PostWpJaRestClientImpl extends AbstractSpringRestClient<PostWpJaWrapper> implements PostWpJaRestClient<PostWpJaWrapper>
+@Service("postWpJaRestClientImpl")
+public class PostWpJaRestClientImpl extends AbstractSpringRestClient<PostWpJaWrapper> implements PostWpJaRestClient<PostWpJaWrapper> 
 {
 	private static final String METHOD_GET_POST = "get_post";
+	private static final String PARAM_ID = "id";
+	private static final String PARAM_SLUG = "slug";
 	
-	private static final String PARAM_ID 		= "id";
-	private static final String PARAM_SLUG 		= "slug";
-	
-	public PostWpJaRestClientImpl() 
+	public PostWpJaRestClientImpl()
 	{
 		super(PostWpJaWrapper.class);
 	}

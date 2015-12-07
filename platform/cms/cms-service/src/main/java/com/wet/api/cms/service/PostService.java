@@ -5,20 +5,11 @@ import java.util.List;
 import org.joda.time.LocalDate;
 import org.joda.time.YearMonth;
 
-import com.wet.api.cms.model.Archive;
-import com.wet.api.cms.model.Author;
-import com.wet.api.cms.model.Category;
 import com.wet.api.cms.model.Post;
-import com.wet.api.cms.model.Tag;
-import com.wet.api.common.service.CommonService;
+import com.wet.api.common.service.CommonRestService;
 
-public interface CmsService extends CommonService
+public interface PostService extends CommonRestService
 {
-	public Archive getArchive();
-	public List<Author> findAllAuthors();
-	public List<Category> findAllCategories();
-	public List<Category> findAllSubCategories(int parentId);
-	public List<Tag> findAllTags();
 	public Post findPostById(long id);
 	public Post findPostBySlug(String slug);
 	public List<Post> findAllPosts();
@@ -38,10 +29,10 @@ public interface CmsService extends CommonService
 	public List<Post> findPostsByTag(String tagSlug);
 	public List<Post> findPostsByTag(long tagId, int countPerPage, int pageNumber);
 	public List<Post> findPostsByTag(String tagSlug, int countPerPage, int pageNumber);
-	public List<Post> findPostsByAuthor(long authorId);
-	public List<Post> findPostsByAuthor(String authorSlug);
-	public List<Post> findPostsByAuthor(long authorId, int countPerPage, int pageNumber);
-	public List<Post> findPostsByAuthor(String authorSlug, int countPerPage, int pageNumber);
+	public List<Post> findPostsByUser(long userId);
+	public List<Post> findPostsByUser(String userSlug);
+	public List<Post> findPostsByUser(long userId, int countPerPage, int pageNumber);
+	public List<Post> findPostsByUser(String userSlug, int countPerPage, int pageNumber);
 	public List<Post> findPostsByKeywords(String keywords);
 	public List<Post> findPostsByKeywords(String keywords, int countPerPage, int pageNumber);
 }

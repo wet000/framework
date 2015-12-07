@@ -11,7 +11,7 @@ public class Comment extends AbstractDomainObject
 	private String date;
 	private String content;
 	private int parent;
-	private Author author;
+	private User user;
 	
 	public String getName() 
 	{
@@ -63,13 +63,13 @@ public class Comment extends AbstractDomainObject
 		this.parent = parent;
 	}
 	
-	public Author getAuthor()
+	public User getAuthor()
 	{
-		return author;
+		return user;
 	}
 	
-	public void setAuthor(Author author)
+	public void setAuthor(User user)
 	{
-		this.author = author;
+		this.user = user;
 	}
 }

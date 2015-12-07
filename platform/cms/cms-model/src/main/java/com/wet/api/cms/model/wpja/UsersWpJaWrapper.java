@@ -2,14 +2,18 @@ package com.wet.api.cms.model.wpja;
 
 import java.util.List;
 
-import com.wet.api.cms.model.Author;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wet.api.cms.model.User;
 import com.wet.api.common.model.impl.AbstractDomainObject;
 
-public class AuthorsWpJaWrapper extends AbstractDomainObject
+public class UsersWpJaWrapper extends AbstractDomainObject
 {
 	private String status;
+	
 	private int count;
-	private List<Author> authors;
+	
+	@JsonProperty("authors")
+	private List<User> users;
 	
 	public String getStatus()
 	{
@@ -31,13 +35,13 @@ public class AuthorsWpJaWrapper extends AbstractDomainObject
 		this.count = count;
 	}
 
-	public List<Author> getAuthors() 
+	public List<User> getUsers() 
 	{
-		return authors;
+		return users;
 	}
 
-	public void setAuthors(List<Author> authors) 
+	public void setUsers(List<User> users) 
 	{
-		this.authors = authors;
+		this.users = users;
 	}
 }

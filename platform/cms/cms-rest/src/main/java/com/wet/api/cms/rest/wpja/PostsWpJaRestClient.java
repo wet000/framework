@@ -25,10 +25,10 @@ public interface PostsWpJaRestClient <T extends DomainObject> extends PostsRestC
 	public T getTagPosts(String tagSlug);
 	public T getTagPosts(long tagId, int countPerPage, int pageNumber);
 	public T getTagPosts(String tagSlug, int countPerPage, int pageNumber);
-	public T getAuthorPosts(long authorId);
-	public T getAuthorPosts(String authorSlug);
-	public T getAuthorPosts(long authorId, int countPerPage, int pageNumber);
-	public T getAuthorPosts(String authorSlug, int countPerPage, int pageNumber);
+	public T getUserPosts(long userId);
+	public T getUserPosts(String userSlug);
+	public T getUserPosts(long userId, int countPerPage, int pageNumber);
+	public T getUserPosts(String userSlug, int countPerPage, int pageNumber);
 	public T getSearchResults(String search);
 	public T getSearchResults(String search, int countPerPage, int pageNumber);
 }
