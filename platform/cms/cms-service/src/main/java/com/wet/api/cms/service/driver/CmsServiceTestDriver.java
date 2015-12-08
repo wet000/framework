@@ -76,6 +76,21 @@ public class CmsServiceTestDriver
 			System.out.println("User: " + user.getDisplayName());
 		}
 		
+		User user = new User();
+		//username=myquest97&email=myquest97@gmail.com&nonce=a260bf0bbd&display_name=Mike&user_pass=kingka12
+		user.setUsername("test5");
+		user.setEmail("test@email.com");
+		user.setPassword("secret");
+		user.setDisplayName("Bob");
+		user.setFirstName("Bob");
+		user.setLastName("West");
+		userService.register(user);
+		
+		userService.login(user.getUsername(), user.getPassword());
+		User authenticatedUser = userService.getAuthenticatedUser();
+		System.out.println("User name: " + authenticatedUser.getFirstName() + " " + authenticatedUser.getLastName());
+		System.out.println("Email: " + authenticatedUser.getEmail());
+		
 		context.close();
 	}
 	

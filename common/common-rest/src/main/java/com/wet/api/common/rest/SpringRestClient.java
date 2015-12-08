@@ -6,5 +6,6 @@ import com.wet.api.common.model.DomainObject;
 
 public interface SpringRestClient<T extends DomainObject> extends RestClient<T>
 {
+	public String getBaseUri();
 	public ResponseEntity<T> getResponse(String uri);
 }

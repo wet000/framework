@@ -23,7 +23,6 @@ public abstract class AbstractSpringRestClient<T extends DomainObject> implement
 	private final Class<T> type;
 	private final RestTemplate restTemplate;
 	
-	private String baseUri = System.getenv("OPENSHIFT_WP_BASEURL");
 	private String method;
 	private Map<String, Object> params;
 	private HttpEntity<String> entity;
@@ -65,7 +64,7 @@ public abstract class AbstractSpringRestClient<T extends DomainObject> implement
 	
 	protected String constructUri()
 	{
-		StringBuilder sb = new StringBuilder(this.baseUri);
+		StringBuilder sb = new StringBuilder(getBaseUri());
 		sb.append(this.method).append("/?");
 		
 		int size = params.size();
@@ -161,6 +160,7 @@ public abstract class AbstractSpringRestClient<T extends DomainObject> implement
 
 	private ResponseEntity<T> getResponseEntity(String uri, HttpEntity<String> entity, Map<String, ?> params)
 	{
+		System.out.println("Uri: " + uri);
 		return this.restTemplate.exchange(uri, HttpMethod.POST, entity, this.type, params);
 	}
 }

@@ -11,9 +11,17 @@ public class ArchiveWpJaRestClientImpl extends AbstractSpringRestClient<ArchiveW
 {
 	private static final String METHOD_GET_DATE_INDEX = "get_date_index";
 	
+	private String baseUri = System.getenv("OPENSHIFT_WP_BASEURL") + "/api/core/";
+	
 	public ArchiveWpJaRestClientImpl() 
 	{
 		super(ArchiveWpJaWrapper.class);
+	}
+	
+	@Override
+	public String getBaseUri() 
+	{
+		return baseUri;
 	}
 
 	@Override

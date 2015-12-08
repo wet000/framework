@@ -11,6 +11,14 @@ public class UsersWpJaRestClientImpl extends AbstractSpringRestClient<UsersWpJaW
 {
 	private static final String METHOD_GET_USER_INDEX = "get_author_index";
 	
+	private String baseUri = System.getenv("OPENSHIFT_WP_BASEURL") + "/api/core/";
+	
+	@Override
+	public String getBaseUri() 
+	{
+		return baseUri;
+	}
+	
 	public UsersWpJaRestClientImpl() 
 	{
 		super(UsersWpJaWrapper.class);

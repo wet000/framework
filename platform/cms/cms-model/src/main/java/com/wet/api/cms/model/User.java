@@ -2,6 +2,7 @@ package com.wet.api.cms.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.wet.api.common.model.impl.AbstractDomainObject;
@@ -9,6 +10,11 @@ import com.wet.api.common.model.impl.AbstractDomainObject;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class User extends AbstractDomainObject
 {
+	// TODO:
+	//	1. Need to make slug, firstname, lastname compatible across both JSON API and JSON API User
+	//	2. Need to find a way to map the register date when retrieving the user
+	//	3. Need to decide how to map the user ROLEs
+	
 	public enum ROLE
 	{
 		UNDEFINED,
@@ -21,6 +27,8 @@ public class User extends AbstractDomainObject
 	
 	private String username;
 	
+	private String password;
+
 	@JsonProperty("nicename")
 	private String slug; // Username made URL compliant also known as nicename
 	
@@ -51,8 +59,9 @@ public class User extends AbstractDomainObject
 	// TODO: The JSON API User Rest interface lets you get their avatar as well.
 	// You'll need to research deeper into exactly what this is
 	
-	@JsonProperty("registered")
-	private Date createDate;
+//	@JsonIgnore
+//	@JsonProperty("registered")
+//	private Date createDate;
 
 	public String getUsername()
 	{
@@ -62,6 +71,16 @@ public class User extends AbstractDomainObject
 	public void setUsername(String username) 
 	{
 		this.username = username;
+	}
+	
+	public String getPassword() 
+	{
+		return password;
+	}
+
+	public void setPassword(String password) 
+	{
+		this.password = password;
 	}
 
 	public String getSlug() 
@@ -167,13 +186,13 @@ public class User extends AbstractDomainObject
 		this.bio = bio;
 	}
 
-	public Date getCreateDate()
-	{
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate)
-	{
-		this.createDate = createDate;
-	}
+//	public Date getCreateDate()
+//	{
+//		return createDate;
+//	}
+//
+//	public void setCreateDate(Date createDate)
+//	{
+//		this.createDate = createDate;
+//	}
 }

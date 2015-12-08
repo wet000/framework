@@ -12,9 +12,17 @@ public class CategoriesWpJaRestClientImpl extends AbstractSpringRestClient<Categ
 	private static final String METHOD_GET_CATEGORY_INDEX = "get_category_index";
 	private static final String PARAM_PARENT = "parent";
 	
+	private String baseUri = System.getenv("OPENSHIFT_WP_BASEURL") + "/api/core/";
+	
 	public CategoriesWpJaRestClientImpl()
 	{
 		super(CategoriesWpJaWrapper.class);
+	}
+	
+	@Override
+	public String getBaseUri() 
+	{
+		return baseUri;
 	}
 
 	@Override

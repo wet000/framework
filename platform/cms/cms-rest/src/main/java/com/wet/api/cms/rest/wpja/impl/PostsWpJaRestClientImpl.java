@@ -27,9 +27,17 @@ public class PostsWpJaRestClientImpl extends AbstractSpringRestClient<PostsWpJaW
 	private static final String PARAM_SLUG					= "slug";
 	private static final String PARAM_SEARCH				= "search";
 	
+	private String baseUri = System.getenv("OPENSHIFT_WP_BASEURL") + "/api/core/";
+	
 	public PostsWpJaRestClientImpl()
 	{
 		super(PostsWpJaWrapper.class);
+	}
+	
+	@Override
+	public String getBaseUri() 
+	{
+		return baseUri;
 	}
 
 	@Override

@@ -11,9 +11,17 @@ public class TagsWpJaRestClientImpl extends AbstractSpringRestClient<TagsWpJaWra
 {
 	private static final String METHOD_GET_TAG_INDEX = "get_tag_index";
 	
+	private String baseUri = System.getenv("OPENSHIFT_WP_BASEURL") + "/api/core/";
+	
 	public TagsWpJaRestClientImpl() 
 	{
 		super(TagsWpJaWrapper.class);
+	}
+	
+	@Override
+	public String getBaseUri() 
+	{
+		return baseUri;
 	}
 
 	@Override
