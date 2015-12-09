@@ -7,9 +7,9 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wet.api.common.model.DomainObject;
+import com.wet.api.common.model.DomainEntity;
 
-public abstract class AbstractDaoJpa<T extends DomainObject> extends AbstractDao<T> 
+public abstract class AbstractDaoJpa<T extends DomainEntity> extends AbstractDao<T> 
 {
 	@PersistenceContext
 	protected EntityManager entityManager;

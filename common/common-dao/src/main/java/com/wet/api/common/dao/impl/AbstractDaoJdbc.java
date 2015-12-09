@@ -8,9 +8,9 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.wet.api.common.model.DomainObject;
+import com.wet.api.common.model.DomainEntity;
 
-public abstract class AbstractDaoJdbc<T extends DomainObject> extends AbstractDao<T>
+public abstract class AbstractDaoJdbc<T extends DomainEntity> extends AbstractDao<T>
 {
 	@Autowired
 	protected DataSource dataSource;

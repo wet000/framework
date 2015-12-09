@@ -18,6 +18,7 @@
   	<module>common-bom</module>
   	<module>common-dao</module>
   	<module>common-model</module>
+    <module>common-rest</module>
   	<module>common-service</module>
   </modules>
 
